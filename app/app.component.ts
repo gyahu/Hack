@@ -10,6 +10,7 @@ import { MenuComponent } from './menu.component';
   `,
   directives: [HomeComponent, MenuComponent],
 })
+
 export class AppComponent {
   title = 'Tour of Heroes';
 }
