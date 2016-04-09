@@ -20,14 +20,14 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         execute: function() {
             MenuComponent = (function () {
                 function MenuComponent() {
-                    this.app_name = 'Name';
-                    this.username_label = 'Windstorm';
+                    this.app_name = 'THE NAME';
+                    this.username_label = 'Username';
                     this.password_label = "Password";
                 }
                 MenuComponent = __decorate([
                     core_1.Component({
                         selector: 'app-menu',
-                        template: "\n    "
+                        template: "\n    \t<div class=\"left_menu\">{{app_name}}</div>\n    \t<div class=\"right_menu\">\n    \t\t<span>{{username_label}}<input type=\"text\"></span>\n    \t\t<span>{{password_label}}<input type=\"password\"></span>\n    \t\t<button class=\"btn\">Log in</button>\n    \t</div>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], MenuComponent);

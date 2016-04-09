@@ -8,6 +8,36 @@ body {
 
 app-menu {
   background-color: #0266C8;
-  display: block; }
+  color: #FFFFFF;
+  display: block;
+  height: 40px;
+  width: 100%; }
+  app-menu > .left_menu {
+    display: inline-block;
+    height: 100%;
+    width: 40%;
+    font-weight: bolder;
+    font-size: 24px; }
+  app-menu > .right_menu {
+    display: inline-block;
+    height: 100%;
+    width: 58%;
+    font-weight: bolder; }
+    app-menu > .right_menu input {
+      margin-left: 10px; }
+  app-menu .btn {
+    -webkit-border-radius: 23;
+    -moz-border-radius: 23;
+    border-radius: 23px;
+    font-family: Arial;
+    font-weight: bolder;
+    color: #ffffff;
+    font-size: 12px;
+    background: #8c9da8;
+    padding: 5x 10px 5px 10px;
+    text-decoration: none; }
+  app-menu .btn:hover {
+    background: #292229;
+    text-decoration: none; }
 
 /*# sourceMappingURL=styles.css.map */

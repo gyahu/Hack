@@ -16,5 +16,44 @@ body {
 
 app-menu {
 	background-color: $primary-color;
+	color: $primary-text-color;
 	display: block;
+	height: 40px;
+	width: 100%;
+
+	> .left_menu {
+		display: inline-block;
+		height: 100%;
+		width: 40%;
+		font-weight: bolder;
+		font-size: $big-text-size;
+	}
+
+	> .right_menu {
+		display: inline-block;
+		height: 100%;
+		width: 58%;
+		font-weight: bolder;
+		input {
+			margin-left: 10px;
+		}
+	}
+
+	.btn {
+	  -webkit-border-radius: 23;
+	  -moz-border-radius: 23;
+	  border-radius: 23px;
+	  font-family: Arial;
+	  font-weight: bolder;
+	  color: #ffffff;
+	  font-size: $primary-text-size;
+	  background: #8c9da8;
+	  padding: 5x 10px 5px 10px;
+	  text-decoration: none;
+	}
+
+	.btn:hover {
+	  background: #292229;
+	  text-decoration: none;
+	}
 }
