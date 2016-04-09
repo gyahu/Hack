@@ -11,30 +11,27 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var MenuComponent;
+    var ProfileComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            MenuComponent = (function () {
-                function MenuComponent() {
-                    this.app_name = 'THE NAME';
-                    this.username_label = 'Username';
-                    this.password_label = "Password";
+            ProfileComponent = (function () {
+                function ProfileComponent() {
                 }
-                MenuComponent = __decorate([
+                ProfileComponent = __decorate([
                     core_1.Component({
-                        selector: 'app-menu',
-                        template: "\n    \t<div class=\"left_menu\">{{app_name}}</div>\n    \t<div class=\"right_menu\">\n    \t\t<span>{{username_label}}<input type=\"text\"></span>\n    \t\t<span>{{password_label}}<input type=\"password\"></span>\n    \t\t<button class=\"btn\">Log in</button>\n    \t</div>\n    "
+                        selector: 'profile',
+                        template: "\n    \t<h1>Profile page</h1>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
-                ], MenuComponent);
-                return MenuComponent;
+                ], ProfileComponent);
+                return ProfileComponent;
             }());
-            exports_1("MenuComponent", MenuComponent);
+            exports_1("ProfileComponent", ProfileComponent);
         }
     }
 });
-//# sourceMappingURL=menu.component.js.map
+//# sourceMappingURL=profile.component.js.map
