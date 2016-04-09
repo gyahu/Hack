@@ -6,26 +6,26 @@ body {
   font: 100% Helvetica, sans-serif;
   color: #0266C8; }
 
-app-menu {
+#menu {
   background-color: #0266C8;
   color: #FFFFFF;
   display: block;
   height: 40px;
   width: 100%; }
-  app-menu > .left_menu {
+  #menu > .left_menu {
     display: inline-block;
     height: 100%;
     width: 40%;
     font-weight: bolder;
     font-size: 24px; }
-  app-menu > .right_menu {
+  #menu > .right_menu {
     display: inline-block;
     height: 100%;
     width: 58%;
     font-weight: bolder; }
-    app-menu > .right_menu input {
+    #menu > .right_menu input {
       margin-left: 10px; }
-  app-menu .btn {
+  #menu .btn {
     -webkit-border-radius: 28;
     -moz-border-radius: 28;
     border-radius: 28px;
@@ -37,10 +37,13 @@ app-menu {
     background: #fc0000;
     padding: 7px 11px 7px 11px;
     text-decoration: none; }
-  app-menu .btn:hover {
+  #menu .btn:hover {
     background: #c20000;
     text-decoration: none;
     border: solid #c20000 2px; }
+
+profile {
+  color: red; }
 
 app-home #image_container {
   width: 100%;

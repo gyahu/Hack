@@ -12,7 +12,13 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
     		<span>{{password_label}}<input type="password"></span>
     		<button class="btn">Log in</button>
     	</div>
-    `
+    	<a [routerLink]="['Home']">Home</a>
+    	<a [routerLink]="['Profile']">Profile</a>
+    `,
+   directives: [ROUTER_DIRECTIVES],
+	providers: [
+		ROUTER_PROVIDERS,
+	]
 })
 
 @RouteConfig([

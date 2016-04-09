@@ -32,12 +32,14 @@ System.register(['angular2/core', './home.component', './menu.component', './pro
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
-                    this.title = 'Tour of Heroes';
+                    this.app_name = 'THE NAME';
+                    this.username_label = 'Username';
+                    this.password_label = "Password";
                 }
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    <app-menu>Loading menu...</app-menu>\n    \n    <router-outlet></router-outlet>\n  ",
+                        template: "\n  <div id=\"menu\">\n    <div class=\"left_menu\">{{app_name}}</div>\n    <div class=\"right_menu\">\n      <span>{{username_label}}<input type=\"text\"></span>\n      <span>{{password_label}}<input type=\"password\"></span>\n      <button class=\"btn\">Log in</button>\n    </div>\n    <a [routerLink]=\"['Home']\">Home</a>\n    <a [routerLink]=\"['Profile']\">Profile</a>\n    <router-outlet></router-outlet>\n  </div>\n  ",
                         directives: [router_1.ROUTER_DIRECTIVES, home_component_1.HomeComponent, menu_component_1.MenuComponent],
                         providers: [
                             router_1.ROUTER_PROVIDERS,

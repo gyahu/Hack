@@ -16,7 +16,7 @@ body {
   color: $primary-color;
 }
 
-app-menu {
+#menu {
 	background-color: $primary-color;
 	color: $primary-text-color;
 	display: block;
@@ -61,6 +61,10 @@ app-menu {
 	  text-decoration: none;
 	  border: solid $button-hover-color 2px;
 	}
+}
+
+profile {
+	color: red;
 }
 
 app-home {

@@ -7,9 +7,17 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
 @Component({
   selector: 'my-app',
   template: `
-    <app-menu>Loading menu...</app-menu>
-    
+  <div id="menu">
+    <div class="left_menu">{{app_name}}</div>
+    <div class="right_menu">
+      <span>{{username_label}}<input type="text"></span>
+      <span>{{password_label}}<input type="password"></span>
+      <button class="btn">Log in</button>
+    </div>
+    <a [routerLink]="['Home']">Home</a>
+    <a [routerLink]="['Profile']">Profile</a>
     <router-outlet></router-outlet>
+  </div>
   `,
   directives: [ROUTER_DIRECTIVES, HomeComponent, MenuComponent],
   providers: [
@@ -31,5 +39,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
   ])
 
 export class AppComponent {
-  title = 'Tour of Heroes';
+  app_name = 'THE NAME';
+  username_label = 'Username';
+  password_label = "Password";
 }

@@ -36,7 +36,11 @@ System.register(['angular2/core', './profile.component', './home.component', 'an
                 MenuComponent = __decorate([
                     core_1.Component({
                         selector: 'app-menu',
-                        template: "\n    \t<div class=\"left_menu\">{{app_name}}</div>\n    \t<div class=\"right_menu\">\n    \t\t<span>{{username_label}}<input type=\"text\"></span>\n    \t\t<span>{{password_label}}<input type=\"password\"></span>\n    \t\t<button class=\"btn\">Log in</button>\n    \t</div>\n    "
+                        template: "\n    \t<div class=\"left_menu\">{{app_name}}</div>\n    \t<div class=\"right_menu\">\n    \t\t<span>{{username_label}}<input type=\"text\"></span>\n    \t\t<span>{{password_label}}<input type=\"password\"></span>\n    \t\t<button class=\"btn\">Log in</button>\n    \t</div>\n    \t<a [routerLink]=\"['Home']\">Home</a>\n    \t<a [routerLink]=\"['Profile']\">Profile</a>\n    ",
+                        directives: [router_1.ROUTER_DIRECTIVES],
+                        providers: [
+                            router_1.ROUTER_PROVIDERS,
+                        ]
                     }),
                     router_1.RouteConfig([
                         {
