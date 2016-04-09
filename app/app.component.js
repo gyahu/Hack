@@ -1,4 +1,4 @@
-System.register(['angular2/core', './home.component', './menu.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './home.component', './menu.component', './profile.component', 'angular2/router'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './home.component', './menu.component'], funct
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, home_component_1, menu_component_1;
+    var core_1, home_component_1, menu_component_1, profile_component_1, router_1;
     var AppComponent;
     return {
         setters:[
@@ -22,6 +22,12 @@ System.register(['angular2/core', './home.component', './menu.component'], funct
             },
             function (menu_component_1_1) {
                 menu_component_1 = menu_component_1_1;
+            },
+            function (profile_component_1_1) {
+                profile_component_1 = profile_component_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -31,9 +37,24 @@ System.register(['angular2/core', './home.component', './menu.component'], funct
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    <app-menu>Loading menu...</app-menu>\n    <app-home>Loading home...</app-home>\n  ",
-                        directives: [home_component_1.HomeComponent, menu_component_1.MenuComponent],
-                    }), 
+                        template: "\n    <app-menu>Loading menu...</app-menu>\n    <a [routerLink]=\"['Profile']\">Profile</a>\n    <a [routerLink]=\"['Home']\">Home</a>\n    <router-outlet></router-outlet>\n  ",
+                        directives: [router_1.ROUTER_DIRECTIVES, home_component_1.HomeComponent, menu_component_1.MenuComponent],
+                        providers: [
+                            router_1.ROUTER_PROVIDERS,
+                        ]
+                    }),
+                    router_1.RouteConfig([
+                        {
+                            path: '/profile',
+                            name: 'Profile',
+                            component: profile_component_1.ProfileComponent
+                        },
+                        {
+                            path: '/home',
+                            name: 'Home',
+                            component: home_component_1.HomeComponent
+                        }
+                    ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
                 return AppComponent;

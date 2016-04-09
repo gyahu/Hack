@@ -1,4 +1,6 @@
 import {Component} from 'angular2/core';
+import { ProfileComponent } from './profile.component';
+import { HomeComponent } from './home.component';
 
 @Component({
     selector: 'app-menu',
