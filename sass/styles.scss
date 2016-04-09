@@ -11,6 +11,12 @@ $button-hover-color: #c20000;
 	padding: 0px auto;
 }
 
+a:link{color:inherit}
+a:active{color:inherit}
+a:visited{color:inherit}
+a:hover{color:inherit}
+a{text-decoration:none}
+
 body {
   font: 100% $font-stack;
   color: $primary-color;
@@ -64,6 +70,10 @@ body {
 }
 
 profile {
+	color: red;
+}
+
+register {
 	color: red;
 }
 

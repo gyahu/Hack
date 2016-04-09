@@ -2,6 +2,21 @@
   margin: 0px auto;
   padding: 0px auto; }
 
+a:link {
+  color: inherit; }
+
+a:active {
+  color: inherit; }
+
+a:visited {
+  color: inherit; }
+
+a:hover {
+  color: inherit; }
+
+a {
+  text-decoration: none; }
+
 body {
   font: 100% Helvetica, sans-serif;
   color: #0266C8; }
@@ -43,6 +58,9 @@ body {
     border: solid #c20000 2px; }
 
 profile {
+  color: red; }
+
+register {
   color: red; }
 
 app-home #image_container {

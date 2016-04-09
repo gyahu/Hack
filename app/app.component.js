@@ -1,4 +1,4 @@
-System.register(['angular2/core', './home.component', './menu.component', './profile.component', 'angular2/router'], function(exports_1, context_1) {
+System.register(['angular2/core', './home.component', './profile.component', './register.component', 'angular2/router'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './home.component', './menu.component', './pro
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, home_component_1, menu_component_1, profile_component_1, router_1;
+    var core_1, home_component_1, profile_component_1, register_component_1, router_1;
     var AppComponent;
     return {
         setters:[
@@ -20,11 +20,11 @@ System.register(['angular2/core', './home.component', './menu.component', './pro
             function (home_component_1_1) {
                 home_component_1 = home_component_1_1;
             },
-            function (menu_component_1_1) {
-                menu_component_1 = menu_component_1_1;
-            },
             function (profile_component_1_1) {
                 profile_component_1 = profile_component_1_1;
+            },
+            function (register_component_1_1) {
+                register_component_1 = register_component_1_1;
             },
             function (router_1_1) {
                 router_1 = router_1_1;
@@ -35,12 +35,13 @@ System.register(['angular2/core', './home.component', './menu.component', './pro
                     this.app_name = 'THE NAME';
                     this.username_label = 'Username';
                     this.password_label = "Password";
+                    this.log_in_label = "Log In";
                 }
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n  <div id=\"menu\">\n    <div class=\"left_menu\">{{app_name}}</div>\n    <div class=\"right_menu\">\n      <span>{{username_label}}<input type=\"text\"></span>\n      <span>{{password_label}}<input type=\"password\"></span>\n      <button class=\"btn\">Log in</button>\n    </div>\n    <a [routerLink]=\"['Home']\">Home</a>\n    <a [routerLink]=\"['Profile']\">Profile</a>\n    <router-outlet></router-outlet>\n  </div>\n  ",
-                        directives: [router_1.ROUTER_DIRECTIVES, home_component_1.HomeComponent, menu_component_1.MenuComponent],
+                        template: "\n  <div id=\"menu\">\n    <div class=\"left_menu\"><a [routerLink]=\"['Home']\">{{app_name}}</a></div>\n    <div class=\"right_menu\">\n      <span>{{username_label}}<input type=\"text\"></span>\n      <span>{{password_label}}<input type=\"password\"></span>\n      <button class=\"btn\"><a [routerLink]=\"['Profile']\">{{log_in_label}}</a></button>\n    </div>\n   \n    <router-outlet></router-outlet>\n  </div>\n  ",
+                        directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [
                             router_1.ROUTER_PROVIDERS,
                         ]
@@ -55,7 +56,12 @@ System.register(['angular2/core', './home.component', './menu.component', './pro
                             path: '/home',
                             name: 'Home',
                             component: home_component_1.HomeComponent
-                        }
+                        },
+                        {
+                            path: '/register',
+                            name: 'Register',
+                            component: register_component_1.RegisterComponent,
+                        },
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
