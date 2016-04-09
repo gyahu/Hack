@@ -37,7 +37,7 @@ System.register(['angular2/core', './home.component', './menu.component', './pro
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    <app-menu>Loading menu...</app-menu>\n    <a [routerLink]=\"['Profile']\">Profile</a>\n    <a [routerLink]=\"['Home']\">Home</a>\n    <router-outlet></router-outlet>\n  ",
+                        template: "\n    <app-menu>Loading menu...</app-menu>\n    \n    <router-outlet></router-outlet>\n  ",
                         directives: [router_1.ROUTER_DIRECTIVES, home_component_1.HomeComponent, menu_component_1.MenuComponent],
                         providers: [
                             router_1.ROUTER_PROVIDERS,

@@ -8,8 +8,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
   selector: 'my-app',
   template: `
     <app-menu>Loading menu...</app-menu>
-    <a [routerLink]="['Profile']">Profile</a>
-    <a [routerLink]="['Home']">Home</a>
+    
     <router-outlet></router-outlet>
   `,
   directives: [ROUTER_DIRECTIVES, HomeComponent, MenuComponent],

@@ -1,6 +1,7 @@
 import {Component} from 'angular2/core';
 import { ProfileComponent } from './profile.component';
 import { HomeComponent } from './home.component';
+import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 
 @Component({
     selector: 'app-menu',
@@ -13,6 +14,19 @@ import { HomeComponent } from './home.component';
     	</div>
     `
 })
+
+@RouteConfig([
+	{
+		path: '/profile',
+		name: 'Profile',
+		component: ProfileComponent
+	},
+	{
+		path: '/home',
+		name: 'Home',
+		component: HomeComponent
+	}
+])
 
 export class MenuComponent { 
 	app_name = 'THE NAME';
