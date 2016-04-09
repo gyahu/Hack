@@ -3,6 +3,8 @@ $primary-color: #0266C8;
 $primary-text-color: #FFFFFF;
 $big-text-size: 24px;
 $primary-text-size: 12px;
+$button-color: #fc0000;
+$button-hover-color: #c20000;
 
 * {
 	margin: 0px auto;
@@ -40,21 +42,24 @@ app-menu {
 	}
 
 	.btn {
-	  -webkit-border-radius: 23;
-	  -moz-border-radius: 23;
-	  border-radius: 23px;
+	  -webkit-border-radius: 28;
+	  -moz-border-radius: 28;
+	  border-radius: 28px;
 	  font-family: Arial;
-	  font-weight: bolder;
 	  color: #ffffff;
+	  border: solid $button-color 2px;
 	  font-size: $primary-text-size;
-	  background: #8c9da8;
-	  padding: 5x 10px 5px 10px;
+	  font-weight: bolder;
+	  background: $button-color;
+	  padding: 7px 11px 7px 11px;
 	  text-decoration: none;
 	}
 
+
 	.btn:hover {
-	  background: #292229;
+	  background: $button-hover-color;
 	  text-decoration: none;
+	  border: solid $button-hover-color 2px;
 	}
 }
 
@@ -70,20 +75,22 @@ app-home {
 		  -moz-border-radius: 23;
 		  border-radius: 23px;
 		  position: absolute;
+		  border: solid $button-color 2px;
 		  top: 40%;
 		  left: 35%;
 		  font-family: Arial;
 		  color: #ffffff;
 		  font-size: 50px;
-		  background: #fc0000;
+		  background: $button-color;
 		  padding: 10px 20px 10px 20px;
 		  text-decoration: none;
 
 		}
 
 		.btn:hover {
-		  background: #c20000;
+		  background: $button-hover-color;
 		  text-decoration: none;
+		  border: solid $button-hover-color 2px;
 		}
 	}
 }
