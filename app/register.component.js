@@ -24,7 +24,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 RegisterComponent = __decorate([
                     core_1.Component({
                         selector: 'register',
-                        template: "\n    \t<h1>Sign up page</h1>\n    "
+                        templateUrl: 'html/register_form.html',
                     }), 
                     __metadata('design:paramtypes', [])
                 ], RegisterComponent);
