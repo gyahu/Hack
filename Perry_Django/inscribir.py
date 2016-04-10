@@ -1,5 +1,5 @@
 from getPost import concord
-#import valde/clavero
+import models
 
 
 def inscribir(request):

@@ -1,6 +1,5 @@
 from getPost import concord
-#import valde/clavero
-
+import models
 
 def buscar(request):
 
@@ -10,10 +9,10 @@ def buscar(request):
     dic = concord(request)
 
     country = dic['pais']
-    region = dic['region']
-    POI = dic['POI']
+    #region = dic['region']
+    #POI = dic['POI']
     costoMax = dic['max']
     costoMin = dic['min']
     language = dic['language']
 
-    ConcreteRoute.objects.filter()
+    arr_c_rout = ConcreteRoute.objects.filter(costoMax__leq, )
