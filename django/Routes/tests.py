@@ -49,3 +49,19 @@ class EnrollRouteTestCase(TestCase):
                 inRoutes = True
 
         self.assertTrue(inRoutes)
+
+class ViewRegisterTestCase(TestCase):
+    def test(Self):
+        request = "{  
+   "name":"stefano",
+   "email":"asd@gmail.com",
+   "phone":"3252129",
+   "address":"address",
+   "medicalConsiderations":"medical",
+   "spanish":false,
+   "english":false,
+   "portuguese":false,
+   "tourist":false,
+   "guide":false
+}"
+

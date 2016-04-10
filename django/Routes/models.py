@@ -6,14 +6,15 @@ from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
 import json
+from django.utils import timezone
 
 # Create your models here.
 
 class CustomUserManager(BaseUserManager):
-    def create_user(self, name, dateOfBirth, mail, phone, languages=None, password=None):
+    def create_user(self, name, password, mail, phone, languages=None,medicalConditions = "",guide=False,traveler=False,address = ""):
         if not name:
             raise ValueError('Users must have a name')
-        if not dateOfBirth:
+        if not dateOfBirth :
             raise ValueError('Users must have a date of birth')
         if not mail:
             raise ValueError('Users must have an email address')
@@ -22,28 +23,56 @@ class CustomUserManager(BaseUserManager):
 
         user = self.model(
             name = name,
-            dateOfBirth = dateOfBirth,
             mail = self.normalize_email(mail),
             phone = phone,
             languages = json.dumps(languages),
+            guide= guide,
+            traveler= traveler,
+            address = address,
+            medicalConditions = medicalConditions
         )
+
+        if(traveler):
+            t = Traveler.model(user = user)
+            t.save(using=Traveler._db)
+        if(guide):
+            g = Guide.model(user=user)
+            g.save(using=Guide._db)
 
         user.set_password(password)
         user.save(using=self._db)
 
         return user
 
-    def create_superuser(self, name, dateOfBirth, mail, phone, languages, password):
-        user = self.create_user(
+    def create_superuser(self, name, password, mail, phone, languages=None,medicalConditions = "",guide=False,traveler=False,address = ""):
+        if not name:
+            raise ValueError('Users must have a name')
+        if not dateOfBirth :
+            raise ValueError('Users must have a date of birth')
+        if not mail:
+            raise ValueError('Users must have an email address')
+        if not phone:
+            raise ValueError('Users must have a phone address')
+
+        user = self.model(
             name = name,
-            dateOfBirth = dateOfBirth,
             mail = self.normalize_email(mail),
             phone = phone,
             languages = json.dumps(languages),
-            password = password,
+            guide= guide,
+            traveler= traveler,
+            address = address,
+            medicalConditions = medicalConditions
         )
 
+        if(traveler):
+            t = Traveler.model(user = user)
+            t.save(using=Traveler._db)
+        if(guide):
+            g = Guide.model(user=user)
+            g.save(using=Guide._db)
         user.is_admin = True
+        user.set_password(password)
         user.save(using=self._db)
 
         return user
@@ -51,14 +80,17 @@ class CustomUserManager(BaseUserManager):
 class CustomUser(AbstractBaseUser):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200)
-    dateOfBirth = models.DateField()
     mail = models.EmailField(
         verbose_name='email address',
         max_length=255,
         unique=True,
     )
+    address = models.CharField(default = "", max_length= 300)
+    guide = models.BooleanField(default = False)
+    traveler = models.BooleanField(default = False)
     phone = models.IntegerField(validators=[MaxValueValidator(99999999999999999999)])
     languages = JSONField(default={}, blank=True, null=True)
+    medicalConditions = models.CharField(default= "", max_length = 300)
 
     USERNAME_FIELD = 'mail'
     REQUIRED_FIELDS = ['name', 'dateOfBirth', 'mail', 'phone']
@@ -93,7 +125,7 @@ class CustomUser(AbstractBaseUser):
 
 class Guide(models.Model):
     user = models.ForeignKey('CustomUser', on_delete=models.CASCADE)
-    rating = models.IntegerField(validators=[MaxValueValidator(10)])
+    rating = models.FloatField(default = 0,validators=[MaxValueValidator(10)])
     description = models.CharField(max_length=500)
 
     def addRoute(self, route, date, description, cost):
@@ -102,18 +134,18 @@ class Guide(models.Model):
 
 class Traveler(models.Model):
     user = models.ForeignKey('CustomUser', on_delete=models.CASCADE)
-    rating = models.IntegerField(validators=[MaxValueValidator(10)])
-    description = models.CharField(max_length=500)
-    foodConsiderations = models.CharField(max_length=500)
+    rating = models.FloatField(default = 0,validators=[MaxValueValidator(10)])
+    description = models.CharField(defualt = "",max_length=500)
+    foodConsiderations = models.CharField(default = "",max_length=500)
     bookmarks = JSONField(default={}, blank=True, null=True)
 
 class Route(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=200)
-    duration = models.DurationField()
-    description = models.CharField(max_length=500)
+    name = models.CharField(default="",max_length=200)
+    duration = models.DurationField(default = timezone.now())
+    description = models.CharField(default="",max_length=500)
     pointsOfInterest = JSONField()
-    country = models.CharField(max_length = 50)
+    country = models.CharField(default = "",max_length = 50)
 
 class ConcreteRoute(models.Model):
     id = models.AutoField(primary_key=True)

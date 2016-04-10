@@ -1,6 +1,6 @@
 from django.db import models
 from getPost import concord
-import models
+from .models import *
 from django.http import HttpResponse
 
 
@@ -9,20 +9,25 @@ def register(request):
 
     password = dic['password']
     name = dic['name']
-    rut = dic['rut']
     mail = dic['mail']
     phone = dic['phone']
-    array_languages = (dic['languages'])['languages']
+    english = dic['english']
+    spanish = dic['spanish']
+    portuguese = dic['portuguese']
     guide_check = dic['guide']
-    guide_description = dic['guide_description']
     traveler_check = dic['traveler']
-    traveler_description = dic['traveler_description']
     medical_conditions = dic['medical']
-    country = dic['country']
-
+    address = dic['address']
+    #HACK
+    array_languages = []
+    if(english):
+        array_languages.add("english")
+    if(spanish):
+        array_languages.add("spanish")
+    if(portuguese):
+        array_languages.add("portuguese")
     try:
-        create_user(name, password, rut, mail, phone, array_languages, guide_check, guide_description,
-                traveler_check, traveler_description, medical_conditions, country)
+        CustomUserManager.create_user(name, password, mail, phone, array_languages, medical_conditions,guide_check,traveler_check, country)
     except Exception:
         return HttpResponse "Mail y/o password incorrecto."
 
