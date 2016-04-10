@@ -23,7 +23,7 @@ def register(request):
         create_user(name, password, rut, mail, phone, array_languages, guide_check, guide_description,
                 traveler_check, traveler_description, medical_conditions, country)
     except Exception:
-        return HttpResponse "Mail y/o password incorrecto."
+        return HttpResponse("Mail y/o password incorrecto.")
 
-    return HttpResponse "Cuenta registrada."
+    return HttpResponse("Cuenta registrada.")
 

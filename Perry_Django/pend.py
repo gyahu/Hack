@@ -14,8 +14,8 @@ def pend(request):
     c_route = ConcreteRoute.objects.filter(id=id_route)
     user = request.user()
 
-    traveler = list(Traveler.objects.filter(user=user))[0]
+    traveler = Traveler.objects.filter(user=user)
 
     APRoute.objects.create(traveler=traveler, guide=c_route.guide, concreteRoute=c_route, isActive=False)
-    return HttpResponse "Ruta Activada."
+    return HttpResponse("Ruta Activada.")
 
