@@ -1,5 +1,4 @@
 from getPost import *
-from django.db.models import Q
 #import valde/clavero
 
 
@@ -12,8 +11,11 @@ def match(request):
 
     id_route = dic['route']
     user = request.user()
+    guide = Guide.objects.filter(user=user)
 
-    p = Pending.objects.filter(Q(traveler=user.id) | Q(guide=user.id), route=id_route)
-    Active.objects.create(traveler=p.traveler, guide=p.guide, date=p.date, route=p.route)
+    p = APRoute.objects.filter(guide=guide, route=id_route)
+    p.isActive = True
+    p.save()
+    ActiveRoute.objects.create(traveler=p.traveler, guide=p.guide, date=p.date, route=p.route)
     p.delete()
 
