@@ -1,4 +1,6 @@
 from getPost import concord
+import json
+from django.http import HttpResponse
 import models
 
 def buscar(request):
@@ -10,9 +12,11 @@ def buscar(request):
 
     country = dic['pais']
     #region = dic['region']
-    #POI = dic['POI']
+    POI = dic['POI']
     costoMax = dic['max']
     costoMin = dic['min']
     language = dic['language']
 
-    arr_c_rout = ConcreteRoute.objects.filter(costoMax__leq, )
+    routes = ConcreteRoute.objects.filter(route.country=country, cost__lte=costoMax, cost__gte=costoMin, language in json.loads(route.guide.languages), (set(POI.keys) & set(route.pointsOfInterest.keys)))
+    return HttpResponse(json.dump(routes))
+

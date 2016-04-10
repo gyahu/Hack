@@ -1,6 +1,7 @@
 from django.db import models
 from getPost import concord
-#import valde/clavero
+import models
+from django.http import HttpResponse
 
 
 def register(request):
@@ -23,7 +24,7 @@ def register(request):
         create_user(name, password, rut, mail, phone, array_languages, guide_check, guide_description,
                 traveler_check, traveler_description, medical_conditions, country)
     except Exception:
-        print "Mail y/o password incorrecto."
+        return HttpResponse "Mail y/o password incorrecto."
 
-    print "Cuenta registrada."
+    return HttpResponse "Cuenta registrada."
 

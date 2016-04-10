@@ -1,5 +1,6 @@
 from getPost import concord
 import models
+from django.http import HttpResponse
 
 
 def inscribir(request):

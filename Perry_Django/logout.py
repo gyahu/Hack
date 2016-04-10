@@ -1,5 +1,7 @@
 from django.contrib.auth import logout
 
 
-def logout_view(request):
+def leave(request):
     logout(request)
+    return HttpResponse
+
