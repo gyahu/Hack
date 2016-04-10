@@ -15,6 +15,11 @@ def mod(request):
     languages = dic['languages']
     medical = dic['medical']
     country = dic['country']
+    traveler = dic['traveler']
+    traveler_description = dic['traveler_description']
+    food_considerations = dic['food_considerations']
+    guide = dic['guide']
+    guide_description = dic['guide_description']
 
     modify(request, password, phone, languages, medical, country)
 

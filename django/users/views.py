@@ -3,6 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login
 from Routes.models import*
 from django.core import serializers
+from django.utils import timezone
 import json
 
 # Placeholder
@@ -43,3 +44,32 @@ def log(request):
 def concord(request):
     dic = json.loads(request.body)
     return dic
+
+
+def register(request):
+	dic = concord(request)
+	password = dic['password']
+	name = dic['name']
+	mail = dic['email']
+	phone = dic['phone']
+	address = dic['address']
+	medicalConsiderations = dic['medicalConsiderations']
+	spanish = dic['spanish']
+	english = dic['english']
+	portuguese = dic['portuguese']
+	tourist = dic['tourist']
+	guide = dic['guide']
+	languages = []
+	if spanish:
+		languages.add("spanish")
+	if english:
+		languages.add("english")
+	if portuguese:
+		languages.add("portuguese")
+
+	try:
+		CustomUserManager().create_custom_user(name,timezone.now(),mail,phone,password,languages)
+		return HttpResponse("OK")
+	except:
+		return HttpResponse(status=402)
+
