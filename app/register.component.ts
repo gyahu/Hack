@@ -164,7 +164,7 @@ export class RegisterComponent {
 		headers.append('Contencdt-Type', 'application/json');
 		headers.append('Access-Control-Allow-Origin', '*');
 		this.http.post(
-			"http://192.168.0.31/users/createUser",
+			"http://192.168.0.58:8000/users/createUser/",
 			JSON.stringify(this.user),
 			headers
 		).map((res: Response) => JSON.stringify(res.json())).subscribe((res : string) => this.resp = res);
@@ -172,8 +172,6 @@ export class RegisterComponent {
 
 		this.submitted = true; 
 	}
-
-
 
 	// TODO: Remove this when we're done
 	get diagnostic() { return JSON.stringify(this.user); }
