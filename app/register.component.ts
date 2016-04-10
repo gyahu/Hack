@@ -12,7 +12,7 @@ import 'rxjs/Rx';
 	<fieldset>
 
 	<!-- Form Name -->
-	<legend>Please complete this form</legend>
+	<legend>Please fill this form</legend>
 
 	<!-- Text input-->
 	<div class="form-group">
