@@ -40,55 +40,55 @@ body {
   color: $primary-color;
 }
 
+my-app {
+	#menu {
+		background-color: $primary-color;
+		color: $primary-text-color;
+		display: block;
+		height: 40px;
+		width: 100%;
+		padding-top: 5px;
+		padding-left: 5px;
 
-#menu {
-	background-color: $primary-color;
-	color: $primary-text-color;
-	display: block;
-	height: 40px;
-	width: 100%;
+		> .left_menu {
+			vertical-align: middle;
+			display: inline-block;
+			height: 100%;
+			width: 40%;
+			font-weight: bolder;
+			font-size: $big-text-size;
+		}
 
-	> .left_menu {
-		vertical-align: middle;
-		display: inline-block;
-		height: 100%;
-		width: 40%;
-		font-weight: bolder;
-		font-size: $big-text-size;
-	}
+		> .right_menu {
+			display: inline-block;
+			height: 100%;
+			width: 58%;
+			font-weight: bolder;
+			input {
+				margin-left: 10px;
+				color: black;
+			}
+		}
 
-	> .right_menu {
-		display: inline-block;
-		height: 100%;
-		width: 58%;
-		font-weight: bolder;
-		input {
-			margin-left: 10px;
-			color: black;
+		.btn {
+		  font-family: Arial;
+		  color: #ffffff;
+		  border: solid $button-color 2px;
+		  font-size: $primary-text-size;
+		  font-weight: bolder;
+		  background: $button-color;
+		  padding: 0px 10px 0px 10px;
+		  text-decoration: none;
+		}
+
+		.btn:hover {
+		  background: $button-hover-color;
+		  text-decoration: none;
+		  border: solid $button-hover-color 2px;
 		}
 	}
-
-	.btn {
-	  -webkit-border-radius: 28;
-	  -moz-border-radius: 28;
-	  border-radius: 28px;
-	  font-family: Arial;
-	  color: #ffffff;
-	  border: solid $button-color 2px;
-	  font-size: $primary-text-size;
-	  font-weight: bolder;
-	  background: $button-color;
-	  padding: 7px 11px 7px 11px;
-	  text-decoration: none;
-	}
-
-
-	.btn:hover {
-	  background: $button-hover-color;
-	  text-decoration: none;
-	  border: solid $button-hover-color 2px;
-	}
 }
+
 
 register {
 	color: $secondary-text-color;
