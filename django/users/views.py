@@ -27,9 +27,9 @@ def log(request):
             serialized_usr = serializers.serialize('json', [ user, ])
             return serialized_usr
         else:
-            return HttpResponse(status = 404) # account disabled
+            return HttpResponse(status = 401) # account disabled
     else:
-        return HttpResponse(status = 404) # wrong login keys
+        return HttpResponse(status = 401) # wrong login keys
 
 def concord(request):
     dic = json.loads(request.body)

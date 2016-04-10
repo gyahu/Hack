@@ -29,7 +29,6 @@ def match(request):
     guide = Guide.objects.filter(user=request.user())
 
     p = APRoute.objects.filter(guide=guide, route=id_route)
-    p.isActive = True
-    p.save()
+    p.confirmMatch()
 
     return HttpResponse("Match confirmed by guide!!!")
