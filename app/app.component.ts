@@ -19,21 +19,19 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
   </div>
   `,
   directives: [ROUTER_DIRECTIVES],
-  providers: [
-    ROUTER_PROVIDERS,
-  ]
+  providers: [ROUTER_PROVIDERS],
 })
 
 @RouteConfig([
   {
     path: '/profile',
     name: 'Profile',
-    component: ProfileComponent
+    component: ProfileComponent,
   },
   {
     path: '/home',
     name: 'Home',
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
     path: '/register',
