@@ -1,5 +1,5 @@
 from getPost import *
-import models
+from django.db import models
 from django.http import HttpResponse
 
 
@@ -12,11 +12,9 @@ def match(request):
 
     id_route = dic['route']
     user = request.user()
-    guide = Guide.objects.filter(user=user)
+    guide = list(Guide.objects.filter(user=user))[0]
 
-    p = APRoute.objects.filter(guide=guide, route=id_route)
+    p = list(APRoute.objects.filter(guide=guide, route=id_route))[0]
     p.isActive = True
     p.save()
-    ActiveRoute.objects.create(traveler=p.traveler, guide=p.guide, date=p.date, route=p.route)
-    p.delete()
-    return HttpResponse "Ruta mactheada. Respuesta pendiente."
+    return HttpResponse "Ruta matcheada. Respuesta pendiente."

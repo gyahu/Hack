@@ -1,6 +1,5 @@
-from django.db import models
 from getPost import concord
-import models
+from django.db import models
 from django.http import HttpResponse
 
 
