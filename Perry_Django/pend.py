@@ -18,4 +18,3 @@ def pend(request):
 
     APRoute.objects.create(traveler=traveler, guide=c_route.guide, concreteRoute=c_route, isActive=False)
     return HttpResponse "Ruta Activada."
-
