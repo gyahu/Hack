@@ -16,7 +16,7 @@ def pending(request):
 
     c_route.match(traveler)
 
-    return HttpResponse("Ruta Activada.")
+    return HttpResponse("Route matched. Aproval pending.")
 
 # Occurs when guide selects a ConcreteRoute match
 def match(request):
@@ -31,6 +31,5 @@ def match(request):
     p = APRoute.objects.filter(guide=guide, route=id_route)
     p.isActive = True
     p.save()
-    ActiveRoute.objects.create(traveler=p.traveler, guide=p.guide, date=p.date, route=p.route)
-    p.delete()
-    return HttpResponse("Ruta mactheada. Respuesta pendiente.")
+
+    return HttpResponse("Match confirmed by guide!!!")
