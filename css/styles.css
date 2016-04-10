@@ -33,6 +33,7 @@ body {
   height: 40px;
   width: 100%; }
   #menu > .left_menu {
+    vertical-align: middle;
     display: inline-block;
     height: 100%;
     width: 40%;
@@ -44,7 +45,8 @@ body {
     width: 58%;
     font-weight: bolder; }
     #menu > .right_menu input {
-      margin-left: 10px; }
+      margin-left: 10px;
+      color: black; }
   #menu .btn {
     -webkit-border-radius: 28;
     -moz-border-radius: 28;
