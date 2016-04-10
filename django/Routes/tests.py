@@ -1,7 +1,9 @@
-from django.test import TestCase
+from django.test import TestCase, RequestFactory
 from Routes.models import *
+from Routes.views import *
 from django.utils import timezone
 import datetime
+import json
 
 # Tests :)
 
@@ -50,23 +52,6 @@ class EnrollRouteTestCase(TestCase):
 
         self.assertTrue(inRoutes)
 
-<<<<<<< HEAD
-class ViewRegisterTestCase(TestCase):
-    def test(Self):
-        request = "{  
-   "name":"stefano",
-   "email":"asd@gmail.com",
-   "phone":"3252129",
-   "address":"address",
-   "medicalConsiderations":"medical",
-   "spanish":false,
-   "english":false,
-   "portuguese":false,
-   "tourist":false,
-   "guide":false
-}"
-
-=======
 # Traveler matching a ConcreteRoute
 class MatchTestCase(TestCase):
 
@@ -171,3 +156,5 @@ class MatchConfirmTestCase(TestCase):
 
         self.assertTrue(self.ap_route.isActive)
 >>>>>>> ab7e7042ed9fa2b1a215563e03392f6f355a4723
+=======
+>>>>>>> Stashed changes

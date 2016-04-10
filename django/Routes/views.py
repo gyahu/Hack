@@ -1,22 +1,15 @@
 from django.http import HttpResponse
-<<<<<<< HEAD
 from models import*
-=======
 from utilities import *
->>>>>>> ab7e7042ed9fa2b1a215563e03392f6f355a4723
 
 # Placeholder
 def index(request):
-<<<<<<< HEAD
 	response = HttpResponse("Welcome to Routes!")
     return ValidateForGioia(response)
 
-def ValidateForGioia(response):
-	response["Access-Control-Allow-Origin"] = "*"
-    response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
-    response["Access-Control-Max-Age"] = "1000"
-    response["Access-Control-Allow-Headers"] = "*"
-    return response
+def concord(request):
+    dic = json.loads(request.body)
+    return dic
 
 def register(request):
     dic = concord(request)
@@ -43,12 +36,7 @@ def register(request):
     try:
         CustomUserManager.create_user(name, password, mail, phone, array_languages, medical_conditions,guide_check,traveler_check, country)
     except Exception:
-        response = HttpResponse "Mail y/o password incorrecto."
-        return ValidateForGioia(response)
-    response = HttpResponse "Cuenta registrada."
-    return ValidateForGioia(response)
-=======
-    return HttpResponse("Welcome to Routes!")
+    	return HttpResponse("Welcome to Routes!")
 
 # Occurs when traveler matches a ConcreteRoute
 def pending(request):
@@ -77,4 +65,3 @@ def match(request):
     p.confirmMatch()
 
     return HttpResponse("Match confirmed by guide!!!")
->>>>>>> ab7e7042ed9fa2b1a215563e03392f6f355a4723

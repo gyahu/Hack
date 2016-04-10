@@ -26,8 +26,8 @@ class CustomUserManager(BaseUserManager):
             mail = self.normalize_email(mail),
             phone = phone,
             languages = json.dumps(languages),
-            guide= guide,
-            traveler= traveler,
+            isGuide= guide,
+            isTraveler= traveler,
             address = address,
             medicalConditions = medicalConditions
         )
@@ -59,8 +59,8 @@ class CustomUserManager(BaseUserManager):
             mail = self.normalize_email(mail),
             phone = phone,
             languages = json.dumps(languages),
-            guide= guide,
-            traveler= traveler,
+            isGuide= guide,
+            isTraveler= traveler,
             address = address,
             medicalConditions = medicalConditions
         )
@@ -86,8 +86,8 @@ class CustomUser(AbstractBaseUser):
         unique=True,
     )
     address = models.CharField(default = "", max_length= 300)
-    guide = models.BooleanField(default = False)
-    traveler = models.BooleanField(default = False)
+    isGuide = models.BooleanField(default = False)
+    isTraveler = models.BooleanField(default = False)
     phone = models.IntegerField(validators=[MaxValueValidator(99999999999999999999)])
     languages = JSONField(default={}, blank=True, null=True)
     medicalConditions = models.CharField(default= "", max_length = 300)
@@ -135,7 +135,7 @@ class Guide(models.Model):
 class Traveler(models.Model):
     user = models.ForeignKey('CustomUser', on_delete=models.CASCADE)
     rating = models.FloatField(default = 0,validators=[MaxValueValidator(10)])
-    description = models.CharField(defualt = "",max_length=500)
+    description = models.CharField(default = "",max_length=500)
     foodConsiderations = models.CharField(default = "",max_length=500)
     bookmarks = JSONField(default={}, blank=True, null=True)
 
