@@ -50,3 +50,17 @@ def search(request):
 
     routes = list(ConcreteRoute.objects.filter(route.country=country, language in json.loads(route.guide.languages), (set(POI.keys) & set(route.pointsOfInterest.keys))))
     return HttpResponse(json.dump(routes))
+
+def add_route(request):
+    if not request.user.is_authenticated():
+        exit()
+
+    dic = concord(request)
+
+    POI = dic['POI']  # Obtener de una funcion en map.js
+    name = dic['name']
+    country = dic['country']
+    duration = dic['duration']
+    description = dic['description']
+
+    Route.objects.create(name=name, country=country, duration=duration, description=description, pointsOfInterest=POI)
