@@ -67,6 +67,12 @@ profile {
 
 register {
   color: #0266C8; }
+  register #submit_success {
+    text-align: center;
+    font-size: 50px;
+    vertical-align: middle;
+    height: 100%;
+    width: 100%; }
 
 app-home #image_container {
   width: 100%;

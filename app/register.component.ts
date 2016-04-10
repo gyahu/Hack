@@ -1,11 +1,14 @@
 import {Component} from 'angular2/core';
 import {User} from './user';
+import {Http, Headers, Response} from 'angular2/http';
+import 'rxjs/Rx';
+
 
 @Component({
     selector: 'register',
     template: `
     <br>
-	<form class="form-horizontal">
+	<form [hidden]="submitted" class="form-horizontal" (ngSubmit)="onSubmit()" #registerForm="ngForm">
 	<fieldset>
 
 	<!-- Form Name -->
@@ -73,10 +76,29 @@ import {User} from './user';
 	<div class="form-group">
 	  <label class="col-md-4 control-label" for="languages">Languages I know</label>
 	  <div class="col-md-4">
-		  <div *ngFor="#lang of languages" class="checkbox">
-		  <label for="languages-0">
-		      <input type="checkbox" name="languages" value="{{lang}}"> {{lang}}
-		    </label>
+		  <div class="checkbox">
+		  <label>
+		      <input #spanishcb 
+		      type="checkbox" 
+		      (change)="user.spanish = spanishcb.checked" value="spanish">
+		      Spanish
+		  </label>
+		  </div>
+		  <div class="checkbox">
+		  <label>
+		      <input #englishcb 
+		      type="checkbox" 
+		      (change)="user.english = englishcb.checked" value="english">
+		      English
+		  </label>
+		  </div>
+		  <div class="checkbox">
+		  <label>
+		      <input #portguesecb 
+		      type="checkbox" 
+		      (change)="user.portuguese = portuguesecb.checked" value="portuguese">
+		      Portuguese
+		  </label>
 		  </div>
 	  </div>
 	</div>
@@ -85,15 +107,22 @@ import {User} from './user';
 	<div class="form-group">
 	  <label class="col-md-4 control-label" for="roles">I want to be a</label>
 	  <div class="col-md-4">
-	    <label *ngFor="#role of roles" class="checkbox-inline" for="roles-0">
-	      <input type="checkbox" name="roles" value="{{role}}">
-	      {{role}}
+	    <label class="checkbox-inline" for="roles">
+	      <input #touristcb
+	      type="checkbox" 
+	      (change)="user.tourist = touristcb.checked" value="tourist"
+	      value="tourist">
+	      Tourist
+	    </label>
+	    <label class="checkbox-inline" for="roles">
+	      <input #guidecb
+	      type="checkbox" 
+	      (change)="user.guide = guidecb.checked" value="guide"
+	      value="guide">
+	      Guide
 	    </label>
 	  </div>
 	</div>
-
-	<form class="form-horizontal">
-	<fieldset>
 
 	<!-- Textarea -->
 	<div class="form-group">
@@ -107,8 +136,17 @@ import {User} from './user';
 	<div class="form-group">
 	  <label class="col-md-4 control-label" for=""></label>
 	  <div class="col-md-4">
-	    <button type="submit" class="btn btn-primary">Sign up!</button>
+	    <button 
+	    type="submit" 
+	    class="btn btn-primary">Sign up!</button>
 	  </div>
+	</div>
+
+	</fieldset>
+	</form>
+	<div [hidden]="!submitted" id="submit_success">
+		Registration succesful!
+		{{resp}}
 	</div>
     `,
 })
@@ -117,9 +155,26 @@ export class RegisterComponent {
 	languages = ['English', 'Spanish', 'Portuguese'];
 	roles = ['Tourist', 'Guide'];
 	user = new User("stefano", "asd@gmail.com", "3252129", "address", "medical");
+	resp;
 
+	constructor(private http : Http) {}
 	submitted = false;
-	onSubmit() { this.submitted = true; }
+	onSubmit() { 
+		var headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		headers.append('Access-Control-Allow-Origin', '*');
+		this.http.post(
+			"hhttp://192.168.0.58:8000/users/createUser",
+			JSON.stringify(this.user),
+			headers
+		).map((res: Response) => JSON.stringify(res.json())).subscribe((res : string) => this.resp = res);
+
+
+		this.submitted = true; 
+	}
+
+
+
 	// TODO: Remove this when we're done
 	get diagnostic() { return JSON.stringify(this.user); }
 }

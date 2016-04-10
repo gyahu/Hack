@@ -12,6 +12,11 @@ System.register([], function(exports_1, context_1) {
                     this.phone = phone;
                     this.address = address;
                     this.medicalConsiderations = medicalConsiderations;
+                    this.spanish = false;
+                    this.english = false;
+                    this.portuguese = false;
+                    this.tourist = false;
+                    this.guide = false;
                 }
                 return User;
             }());

@@ -91,7 +91,16 @@ profile {
 
 register {
 	color: $secondary-text-color;
+
+	#submit_success {
+		text-align: center;
+		font-size: 50px;
+		vertical-align: middle;
+		height: 100%;
+		width: 100%;
+	}
 }
+
 
 app-home {
 	#image_container {

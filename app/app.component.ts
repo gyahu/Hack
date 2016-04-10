@@ -19,7 +19,6 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
   </div>
   `,
   directives: [ROUTER_DIRECTIVES],
-  providers: [ROUTER_PROVIDERS],
 })
 
 @RouteConfig([

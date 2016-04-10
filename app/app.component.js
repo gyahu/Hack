@@ -42,7 +42,6 @@ System.register(['angular2/core', './home.component', './profile.component', './
                         selector: 'my-app',
                         template: "\n  <div id=\"menu\">\n    <div class=\"left_menu\"><a [routerLink]=\"['Home']\">{{app_name}}</a></div>\n    <div class=\"right_menu\">\n      <span>{{username_label}}<input type=\"text\"></span>\n      <span>{{password_label}}<input type=\"password\"></span>\n      <button class=\"btn\"><a [routerLink]=\"['Profile']\">{{log_in_label}}</a></button>\n    </div>\n   \n    <router-outlet></router-outlet>\n  </div>\n  ",
                         directives: [router_1.ROUTER_DIRECTIVES],
-                        providers: [router_1.ROUTER_PROVIDERS],
                     }),
                     router_1.RouteConfig([
                         {
