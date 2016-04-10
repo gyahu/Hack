@@ -11,7 +11,7 @@ def index(request):
 @csrf_exempt
 def createUser(request):
     response = HttpResponse("User creation page.")
-    return HttpResponse(request)
+    return HttpResponse(response)
 
 def log(request):
     dic = concord(request)

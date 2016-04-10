@@ -5,7 +5,7 @@ from utilities import *
 # Placeholder
 def index(request):
 	response = HttpResponse("Welcome to Routes!")
-    return ValidateForGioia(response)
+	return response
 
 def concord(request):
     dic = json.loads(request.body)
