@@ -1,6 +1,9 @@
-from django.db import models
 from getPost import concord
+<<<<<<< HEAD
 from .models import *
+=======
+from django.db import models
+>>>>>>> 99c6f98165770d812b786ea9287f5ff3b7a913a4
 from django.http import HttpResponse
 
 
@@ -29,7 +32,7 @@ def register(request):
     try:
         CustomUserManager.create_user(name, password, mail, phone, array_languages, medical_conditions,guide_check,traveler_check, country)
     except Exception:
-        return HttpResponse "Mail y/o password incorrecto."
+        return HttpResponse("Mail y/o password incorrecto.")
 
-    return HttpResponse "Cuenta registrada."
+    return HttpResponse("Cuenta registrada.")
 

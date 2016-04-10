@@ -1,7 +1,7 @@
 from getPost import concord
 import json
 from django.http import HttpResponse
-import models
+from django.db import models
 
 def buscar(request):
 
@@ -17,6 +17,6 @@ def buscar(request):
     costoMin = dic['min']
     language = dic['language']
 
-    routes = ConcreteRoute.objects.filter(route.country=country, cost__lte=costoMax, cost__gte=costoMin, language in json.loads(route.guide.languages), (set(POI.keys) & set(route.pointsOfInterest.keys)))
+    routes = list(ConcreteRoute.objects.filter(route.country=country, cost__lte=costoMax, cost__gte=costoMin, language in json.loads(route.guide.languages), (set(POI.keys) & set(route.pointsOfInterest.keys))))
     return HttpResponse(json.dump(routes))
 
