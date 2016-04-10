@@ -1,5 +1,6 @@
 from getPost import *
-#import valde/clavero
+import models
+from django.http import HttpResponse
 
 
 def pend(request):
@@ -16,3 +17,5 @@ def pend(request):
     traveler = Traveler.objects.filter(user=user)
 
     APRoute.objects.create(traveler=traveler, guide=c_route.guide, concreteRoute=c_route, isActive=False)
+    return HttpResponse "Ruta Activada."
+

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth import authenticate, login
-from getPost import concord
+import models
+from django.http import HttpResponse
 from encrypted_fields import EncryptedFieldMixin
 #import valde/clavero
 
