@@ -133,3 +133,7 @@ class APRoute(models.Model):
     guide = models.ForeignKey('Guide', on_delete = models.CASCADE) # redundancy introduced to favor performance
     traveler = models.ForeignKey('Traveler',on_delete = models.CASCADE)
     isActive = models.BooleanField(default=False)
+
+    def confirmMatch(self):
+        self.isActive = True
+        self.save()
