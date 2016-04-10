@@ -155,9 +155,17 @@ class ConcreteRoute(models.Model):
     description = models.CharField(max_length=500)
     cost = models.IntegerField(default = 0)
 
+    def match(self, traveler):
+        newAPRoute = APRoute(traveler=traveler, concreteRoute=self, guide=self.guide)
+        newAPRoute.save()
+
 class APRoute(models.Model):
     id = models.AutoField(primary_key=True)
     concreteRoute = models.ForeignKey('ConcreteRoute', on_delete=models.CASCADE)
     guide = models.ForeignKey('Guide', on_delete = models.CASCADE) # redundancy introduced to favor performance
     traveler = models.ForeignKey('Traveler',on_delete = models.CASCADE)
     isActive = models.BooleanField(default=False)
+
+    def confirmMatch(self):
+        self.isActive = True
+        self.save()
