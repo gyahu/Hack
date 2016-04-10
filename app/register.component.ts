@@ -25,7 +25,6 @@ import 'rxjs/Rx';
 		  placeholder="e.g. John Smith" 
 		  class="form-control input-md" required
 		  [(ngModel)]="user.name">
-		  TODO: remove this: {{user.name}}
 	  </div>
 	</div>
 
@@ -40,7 +39,6 @@ import 'rxjs/Rx';
 	  placeholder="johnsmith@email.com" 
 	  class="form-control input-md" required
 	  [(ngModel)]="user.email">
-	    {{user.email}}
 	  </div>
 	</div>
 
@@ -54,7 +52,6 @@ import 'rxjs/Rx';
 	  type="number" 
 	  class="form-control input-md"
 	  [(ngModel)]="user.phone">
-	    {{user.phone}}
 	  </div>
 	</div>
 
@@ -68,7 +65,6 @@ import 'rxjs/Rx';
 	  type="text"
 	  class="form-control input-md" required
 	  [(ngModel)]="user.address">
-	  {{user.address}}
 	  </div>
 	</div>
 
