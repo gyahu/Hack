@@ -96,6 +96,10 @@ class Guide(models.Model):
     rating = models.IntegerField(validators=[MaxValueValidator(10)])
     description = models.CharField(max_length=500)
 
+    def addRoute(self, route, date, description, cost):
+        newRoute = ConcreteRoute(guide=self,route=route,date=date,description=description,cost=cost)
+        newRoute.save()
+
 class Traveler(models.Model):
     user = models.ForeignKey('CustomUser', on_delete=models.CASCADE)
     rating = models.IntegerField(validators=[MaxValueValidator(10)])
