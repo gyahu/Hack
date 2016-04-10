@@ -15,6 +15,11 @@ def mod(request):
     languages = dic['languages']
     medical = dic['medical']
     country = dic['country']
+    traveler = dic['traveler']
+    traveler_description = dic['traveler_description']
+    food_considerations = dic['food_considerations']
+    guide = dic['guide']
+    guide_description = dic['guide_description']
 
     modify(request, password, phone, languages, medical, country)
 
@@ -31,5 +36,24 @@ def modify(request, password=None, phone=None, languages=None, medical=None, cou
         user.medical = medical
     if country:
         user.country = country
+    if traveler:
+        try:
+            Traveler.objects.create(user=user, description=traveler_description, foodConsiderations=food_considerations)
+        except Exception:
+            return HttpResponse ("Informacion incompleta o incorrecta.")
+    if guide:
+        try:
+            Guide.objects.create(user=user, description=guide_description)
+        except Exception:
+            return HttpResponse ("Informacion incompleta o incorrecta.")
+    if traveler_description:
+        t = Traveler.objects.filter(user=user)
+        t.description = traveler_description
+        t.save()
+    if guide_description:
+        g = Guide.objects.filter(user=user)
+        g.description = guide_description
+        g.save()
+
     user.save()
-    return HttpResponse
+    return HttpResponse("Informacion modificada.")

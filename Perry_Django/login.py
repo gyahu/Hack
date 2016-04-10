@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth import authenticate, login
-from django.db import models
 from django.http import HttpResponse
 
 
@@ -16,6 +15,6 @@ def log(request):
         if user.is_active:
             login(request, user)#Cambiar en setting.py la direccion de login
         else:
-            return HttpResponse "Your account has been disabled."
+            return HttpResponse("Your account has been disabled.")
     else:
-        return HttpResponse "The username and/or password were incorrect.")
+        return HttpResponse("The username and/or password were incorrect.")

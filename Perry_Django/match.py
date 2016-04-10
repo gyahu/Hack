@@ -12,9 +12,9 @@ def match(request):
 
     id_route = dic['route']
     user = request.user()
-    guide = list(Guide.objects.filter(user=user))[0]
+    guide = Guide.objects.filter(user=user)
 
-    p = list(APRoute.objects.filter(guide=guide, route=id_route))[0]
+    p = APRoute.objects.filter(guide=guide, route=id_route)
     p.isActive = True
     p.save()
-    return HttpResponse "Ruta matcheada. Respuesta pendiente."
+    return HttpResponse("Ruta matcheada. Respuesta pendiente.")
