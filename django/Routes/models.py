@@ -17,7 +17,7 @@ class CustomUserManager(BaseUserManager):
             raise ValueError('Users must have a date of birth')
         if not mail:
             raise ValueError('Users must have an email address')
-        if not mail:
+        if not phone:
             raise ValueError('Users must have a phone address')
 
         user = self.model(
@@ -118,11 +118,10 @@ class ConcreteRoute(models.Model):
     date = models.DateField()
     description = models.CharField(max_length=500)
     cost = models.IntegerField(default = 0)
-    
 
 class APRoute(models.Model):
     id = models.AutoField(primary_key=True)
     concreteRoute = models.ForeignKey('ConcreteRoute', on_delete=models.CASCADE)
-    guide = models.ForeignKey('Guide', on_delete = models.CASCADE)
+    guide = models.ForeignKey('Guide', on_delete = models.CASCADE) # redundancy introduced to favor performance
     traveler = models.ForeignKey('Traveler',on_delete = models.CASCADE)
     isActive = models.BooleanField(default=False)
