@@ -123,6 +123,10 @@ class ConcreteRoute(models.Model):
     description = models.CharField(max_length=500)
     cost = models.IntegerField(default = 0)
 
+    def match(self, traveler):
+        newAPRoute = APRoute(traveler=traveler, concreteRoute=self, guide=self.guide)
+        newAPRoute.save()
+
 class APRoute(models.Model):
     id = models.AutoField(primary_key=True)
     concreteRoute = models.ForeignKey('ConcreteRoute', on_delete=models.CASCADE)
