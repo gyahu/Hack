@@ -6,7 +6,7 @@ def index(request):
     return HttpResponse("Welcome to Routes!")
 
 # Occurs when traveler matches a ConcreteRoute
-def pending(request):
+def match(request):
     if not request.user.is_authenticated():
         exit()
 
@@ -18,8 +18,8 @@ def pending(request):
 
     return HttpResponse("Route matched. Aproval pending.")
 
-# Occurs when guide selects a ConcreteRoute match
-def match(request):
+# Occurs when guide confirms a ConcreteRoute match
+def confirmMatch(request):
     if not request.user.is_authenticated():
         exit()
 

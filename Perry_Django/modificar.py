@@ -31,5 +31,24 @@ def modify(request, password=None, phone=None, languages=None, medical=None, cou
         user.medical = medical
     if country:
         user.country = country
+    if traveler:
+        try:
+            Traveler.objects.create(user=user, description=traveler_description, foodConsiderations=food_considerations)
+        except Exception:
+            return HttpResponse ("Informacion incompleta o incorrecta.")
+    if guide:
+        try:
+            Guide.objects.create(user=user, description=guide_description)
+        except Exception:
+            return HttpResponse ("Informacion incompleta o incorrecta.")
+    if traveler_description:
+        t = Traveler.objects.filter(user=user)
+        t.description = traveler_description
+        t.save()
+    if guide_description:
+        g = Guide.objects.filter(user=user)
+        g.description = guide_description
+        g.save()
+
     user.save()
-    return HttpResponse
+    return HttpResponse("Informacion modificada.")
