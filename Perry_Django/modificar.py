@@ -1,5 +1,6 @@
 from getPost import concord
-#import valde/clavero
+import models
+from django.http import HttpResponse
 
 
 def mod(request):
@@ -31,3 +32,4 @@ def modify(request, password=None, phone=None, languages=None, medical=None, cou
     if country:
         user.country = country
     user.save()
+    return HttpResponse
