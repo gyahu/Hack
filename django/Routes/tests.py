@@ -1,5 +1,5 @@
 from django.test import TestCase
-from Routes.models import *
+from Routes.models import*
 from django.utils import timezone
 import datetime
 
@@ -9,8 +9,9 @@ import datetime
 class UserTestCase(TestCase):
 
     def setUp(self):
-        self.user1 = CustomUser(name="balde",dateOfBirth=timezone.now(),mail="balde@balde.pls",phone=666)
-        self.user2 = CustomUser(name="perri",dateOfBirth=timezone.now(),mail="perri@perri.pls",phone=1313)
+        self.manager = CustomUserManager()
+        self.user1 = self.manager.create_custom_user(name="balde",dateOfBirth=timezone.now(),mail="balde@balde.pls",phone=666,password="123")
+        self.user2 = self.manager.create_custom_user(name="perri",dateOfBirth=timezone.now(),mail="perri@perri.pls",phone=1313,password="123")
 
     def test_save_user(self):
         self.user1.save()
@@ -23,8 +24,9 @@ class UserTestCase(TestCase):
 class EnrollRouteTestCase(TestCase):
 
     def setUp(self):
+        self.manager = CustomUserManager()
         # Create new user
-        user = CustomUser(name="balde",dateOfBirth=timezone.now(),mail="balde@balde.pls",phone=666)
+        user = self.manager.create_custom_user(name="balde",dateOfBirth=timezone.now(),mail="balde@balde.pls",phone=666,password="123")
         user.save()
 
         # Add user as a guide
@@ -54,13 +56,14 @@ class EnrollRouteTestCase(TestCase):
 class MatchTestCase(TestCase):
 
     def setUp(self):
+        self.manager = CustomUserManager()
         self.c_route = None
 
         # Create new users
-        balde = CustomUser(name = "balde", dateOfBirth = timezone.now(), mail = "balde@balde.pls", phone = 666)
+        balde = self.manager.create_custom_user(name = "balde", dateOfBirth = timezone.now(), mail = "balde@balde.pls", phone = 666, password="123")
         balde.save()
 
-        perri = CustomUser(name = "perri", dateOfBirth = timezone.now(), mail = "perri@perri.pls", phone = 1313)
+        perri = self.manager.create_custom_user(name = "perri", dateOfBirth = timezone.now(), mail = "perri@perri.pls", phone = 1313, password="123")
         perri.save()
 
         # Add user as a guide
@@ -105,13 +108,14 @@ class MatchTestCase(TestCase):
 class MatchConfirmTestCase(TestCase):
 
     def setUp(self):
+        self.manager = CustomUserManager()
         self.c_route = None
 
         # Create new users
-        balde = CustomUser(name = "balde", dateOfBirth = timezone.now(), mail = "balde@balde.pls", phone = 666)
+        balde = self.manager.create_custom_user(name = "balde", dateOfBirth = timezone.now(), mail = "balde@balde.pls", phone = 666, password="123")
         balde.save()
 
-        perri = CustomUser(name = "perri", dateOfBirth = timezone.now(), mail = "perri@perri.pls", phone = 1313)
+        perri = self.manager.create_custom_user(name = "perri", dateOfBirth = timezone.now(), mail = "perri@perri.pls", phone = 1313, password="123")
         perri.save()
 
         # Add user as a guide

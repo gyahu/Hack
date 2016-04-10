@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import login
+from Routes.models import*
 from django.core import serializers
 import json
 
@@ -12,22 +14,29 @@ def createUser(request):
     dic = concord(request)
     return HttpResponse(request)
 
+@csrf_exempt
 def log(request):
+    manager = CustomUserManager()
+
     dic = concord(request)
-    mail = dic['mail']
+    username = dic['username']
     password = dic['password']
 
-    user = authenticate(mail = mail, password = password)
+    user = manager.validate(mail = "asd@asd.asd", password = "123")
 
     if user is not None:
         # the password verified for the user
-        if user.is_active:
-            login(request, user) #Cambiar en setting.py la direccion de login
+        if user.user.is_active:
+            #HACK
+            user.user.backend = 'django.contrib.auth.backends.ModelBackend'
+            login(request, user.user) #Cambiar en setting.py la direccion de login
+
             # Serialize user object
             serialized_usr = serializers.serialize('json', [ user, ])
-            return serialized_usr
+            return HttpResponse(serialized_usr)
+
         else:
-            return HttpResponse(status = 401) # account disabled
+            return HttpResponse(status = 400) # account disabled
     else:
         return HttpResponse(status = 401) # wrong login keys
 
