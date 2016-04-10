@@ -13,4 +13,6 @@ def pend(request):
     c_route = ConcreteRoute.objects.filter(id=id_route)
     user = request.user()
 
-    Pending.objects.create(traveler=user.id, guide=c_route.guide, date=c_route.date, route=c_route.route)
+    traveler = Traveler.objects.filter(user=user)
+
+    APRoute.objects.create(traveler=traveler, guide=c_route.guide, concreteRoute=c_route, isActive=False)
