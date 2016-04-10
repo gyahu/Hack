@@ -92,20 +92,16 @@ class CustomUser(AbstractBaseUser):
         return self.is_admin
 
 class Guide(models.Model):
-    userId = models.ForeignKey('CustomUser', on_delete=models.CASCADE)
+    user = models.ForeignKey('CustomUser', on_delete=models.CASCADE)
     rating = models.IntegerField(validators=[MaxValueValidator(10)])
     description = models.CharField(max_length=500)
-    pendingRoutes = JSONField(default={}, blank=True, null=True)
-    activeRoutes = JSONField(default={}, blank=True, null=True)
 
 class Traveler(models.Model):
-    userId = models.ForeignKey('CustomUser', on_delete=models.CASCADE)
+    user = models.ForeignKey('CustomUser', on_delete=models.CASCADE)
     rating = models.IntegerField(validators=[MaxValueValidator(10)])
     description = models.CharField(max_length=500)
     foodConsiderations = models.CharField(max_length=500)
     bookmarks = JSONField(default={}, blank=True, null=True)
-    pendingRoutes = JSONField(default={}, blank=True, null=True)
-    activeRoutes = JSONField(default={}, blank=True, null=True)
 
 class Route(models.Model):
     id = models.AutoField(primary_key=True)
@@ -113,10 +109,20 @@ class Route(models.Model):
     duration = models.DurationField()
     description = models.CharField(max_length=500)
     pointsOfInterest = JSONField()
+    country = models.CharField(max_length = 50)
 
 class ConcreteRoute(models.Model):
     id = models.AutoField(primary_key=True)
-    guideId = models.ForeignKey('CustomUser', on_delete=models.CASCADE)
-    routeId = models.ForeignKey('Route', on_delete=models.CASCADE)
+    guide = models.ForeignKey('Guide', on_delete=models.CASCADE)
+    route = models.ForeignKey('Route', on_delete=models.CASCADE)
     date = models.DateField()
     description = models.CharField(max_length=500)
+    cost = models.IntegerField(default = 0)
+    
+
+class APRoute(models.Model):
+    id = models.AutoField(primary_key=True)
+    concreteRoute = models.ForeignKey('ConcreteRoute', on_delete=models.CASCADE)
+    guide = models.ForeignKey('Guide', on_delete = models.CASCADE)
+    traveler = models.ForeignKey('Traveler',on_delete = models.CASCADE)
+    isActive = models.BooleanField(default=False)
