@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', './route.component'], function(exports_1, context_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,36 +10,28 @@ System.register(['angular2/core', 'angular2/http', './route.component'], functio
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, route_component_1;
-    var ProfileComponent;
+    var core_1;
+    var RouteComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (http_1_1) {
-                http_1 = http_1_1;
-            },
-            function (route_component_1_1) {
-                route_component_1 = route_component_1_1;
             }],
         execute: function() {
-            ProfileComponent = (function () {
-                function ProfileComponent(http) {
-                    this.http = http;
+            RouteComponent = (function () {
+                function RouteComponent() {
                 }
-                ProfileComponent = __decorate([
+                RouteComponent = __decorate([
                     core_1.Component({
-                        selector: 'profile',
-                        templateUrl: "app/profile.html",
-                        directives: [route_component_1.RouteComponent]
+                        selector: 'route',
+                        templateUrl: "app/route.html"
                     }), 
-                    __metadata('design:paramtypes', [http_1.Http])
-                ], ProfileComponent);
-                return ProfileComponent;
+                    __metadata('design:paramtypes', [])
+                ], RouteComponent);
+                return RouteComponent;
             }());
-            exports_1("ProfileComponent", ProfileComponent);
+            exports_1("RouteComponent", RouteComponent);
         }
     }
 });
-//# sourceMappingURL=profile.component.js.map
+//# sourceMappingURL=route.component.js.map
