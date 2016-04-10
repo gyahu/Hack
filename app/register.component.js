@@ -36,9 +36,9 @@ System.register(['angular2/core', './user', 'angular2/http', 'rxjs/Rx'], functio
                 RegisterComponent.prototype.onSubmit = function () {
                     var _this = this;
                     var headers = new http_1.Headers();
-                    headers.append('Content-Type', 'application/json');
+                    headers.append('Contencdt-Type', 'application/json');
                     headers.append('Access-Control-Allow-Origin', '*');
-                    this.http.post("hhttp://192.168.0.58:8000/users/createUser", JSON.stringify(this.user), headers).map(function (res) { return JSON.stringify(res.json()); }).subscribe(function (res) { return _this.resp = res; });
+                    this.http.post("http://192.168.0.31/users/createUser", JSON.stringify(this.user), headers).map(function (res) { return JSON.stringify(res.json()); }).subscribe(function (res) { return _this.resp = res; });
                     this.submitted = true;
                 };
                 Object.defineProperty(RegisterComponent.prototype, "diagnostic", {

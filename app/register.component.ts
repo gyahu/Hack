@@ -161,10 +161,10 @@ export class RegisterComponent {
 	submitted = false;
 	onSubmit() { 
 		var headers = new Headers();
-		headers.append('Content-Type', 'application/json');
+		headers.append('Contencdt-Type', 'application/json');
 		headers.append('Access-Control-Allow-Origin', '*');
 		this.http.post(
-			"hhttp://192.168.0.58:8000/users/createUser",
+			"http://192.168.0.31/users/createUser",
 			JSON.stringify(this.user),
 			headers
 		).map((res: Response) => JSON.stringify(res.json())).subscribe((res : string) => this.resp = res);
